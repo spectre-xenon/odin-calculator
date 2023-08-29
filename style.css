@@ -1,0 +1,127 @@
+:root {
+  --accent: #cba6f7;
+  --sec-accent: #b4befe;
+  --background: #11111b;
+  --cal-background: #1e1e2e;
+  --output-color: #cdd6f4;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+
+  color: var(--background);
+  font-family: "nova Mono";
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: var(--background);
+  background-image: url("./resources/background.svg");
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  filter: blur(50pxx);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  width: 28%;
+  height: 80%;
+  background-color: var(--cal-background);
+  border-radius: 17px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+main #output {
+  width: 90%;
+  height: 15%;
+  background: var(--output-color);
+  border-radius: 17px;
+
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 3%;
+
+  text-align: end;
+}
+
+#output #previousNum {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 0.8;
+  color: #7b829a;
+  font-size: 26px;
+  padding-right: 1%;
+}
+
+#output #currentNum {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+
+main #controlsContainer {
+  width: 90%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+}
+
+#controlsContainer .row {
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 5%;
+}
+
+#controlsContainer .row .butt {
+  flex: 1;
+  height: 100%;
+  background: var(--sec-accent);
+  border-radius: 8px;
+
+  font-size: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+}
+
+#controlsContainer .row .butt:hover {
+  filter: brightness(110%);
+}
+
+#controlsContainer .row .controls {
+  flex: 1;
+  height: 100%;
+  background: var(--accent);
+}
+
+#controlsContainer .row #enter {
+  flex: 2;
+}
