@@ -86,6 +86,7 @@ c.addEventListener("click", () => {
 const modulus = document.getElementById("modulus");
 modulus.addEventListener("click", () => {
   if (previousNum === "") previousNum = currentNum;
+  if (currentNum === "") previousNum = previousNumDiv.textContent;
   previousNumDiv.textContent = `${previousNum} %`;
   currentNum = "";
   currentNumDiv.textContent = "";
@@ -95,6 +96,7 @@ modulus.addEventListener("click", () => {
 const plus = document.getElementById("plus");
 plus.addEventListener("click", () => {
   if (previousNum === "") previousNum = currentNum;
+  if (currentNum === "") previousNum = previousNumDiv.textContent;
   previousNumDiv.textContent = `${previousNum} +`;
   currentNum = "";
   currentNumDiv.textContent = "";
@@ -104,6 +106,7 @@ plus.addEventListener("click", () => {
 const minus = document.getElementById("minus");
 minus.addEventListener("click", () => {
   if (previousNum === "") previousNum = currentNum;
+  if (currentNum === "") previousNum = previousNumDiv.textContent;
   previousNumDiv.textContent = `${previousNum} -`;
   currentNum = "";
   currentNumDiv.textContent = "";
@@ -113,6 +116,7 @@ minus.addEventListener("click", () => {
 const multiply = document.getElementById("multiply");
 multiply.addEventListener("click", () => {
   if (previousNum === "") previousNum = currentNum;
+  if (currentNum === "") previousNum = previousNumDiv.textContent;
   previousNumDiv.textContent = `${previousNum} *`;
   currentNum = "";
   currentNumDiv.textContent = "";
@@ -122,6 +126,7 @@ multiply.addEventListener("click", () => {
 const divide = document.getElementById("divide");
 divide.addEventListener("click", () => {
   if (previousNum === "") previousNum = currentNum;
+  if (currentNum === "") previousNum = previousNumDiv.textContent;
   previousNumDiv.textContent = `${previousNum} /`;
   currentNum = "";
   currentNumDiv.textContent = "";
@@ -147,4 +152,5 @@ enter.addEventListener("click", () => {
   currentNum = "";
   currentNumDiv.textContent = "";
   previousNumDiv.textContent = previousNum;
+  previousNum = "";
 });
