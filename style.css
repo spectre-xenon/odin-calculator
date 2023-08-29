@@ -6,6 +6,17 @@
   --output-color: #cdd6f4;
 }
 
+::-moz-selection {
+  /* Code for Firefox */
+  color: var(--accent);
+  background: var(--background);
+}
+
+::selection {
+  color: var(--accent);
+  background: var(--cal-background);
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -87,6 +98,10 @@ main #controlsContainer {
   display: flex;
   flex-direction: column;
   gap: 5%;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 #controlsContainer .row {
@@ -127,11 +142,15 @@ main #controlsContainer {
 }
 
 @media only screen and (max-width: 600px) {
+  body{
+    background-size: 700px;
+  }
+  
   main {
     height: 60%;
     width: 85%;
   }
   * {
-    font-size: 20px;
+    font-size: 24px;
   }
 }

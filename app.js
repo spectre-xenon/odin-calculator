@@ -1,25 +1,10 @@
 // Output
+let operation = "";
 let previousNum = "";
 let currentNum = "";
 const previousNumDiv = document.getElementById("previousNum");
 const currentNumDiv = document.getElementById("currentNum");
-// Controls
-const ac = document.getElementById("ac").addEventListener("click", () => {
-  currentNum = "";
-  previousNum = "";
-  previousNumDiv.textContent = "";
-  currentNumDiv.textContent = "";
-});
-const c = document.getElementById("c").addEventListener("click", () => {
-  currentNum = currentNum.substring(0, currentNum.length - 1);
-  currentNumDiv.textContent = currentNum;
-});
-const modulus = document.getElementById("modulus");
-const plus = document.getElementById("plus");
-const minus = document.getElementById("minus");
-const multiply = document.getElementById("multiply");
-const divide = document.getElementById("divide");
-const enter = document.getElementById("enter");
+
 // Numpad
 function addCurrentNum(num) {
   currentNum += num;
@@ -82,23 +67,84 @@ dot.addEventListener("click", () => {
   currentNumDiv.textContent = currentNum;
 });
 
-// Basic
-function getAddition(a, b) {
-  return a + b;
-}
+// Controls
+const ac = document.getElementById("ac");
+ac.addEventListener("click", () => {
+  currentNum = "";
+  previousNum = "";
+  previousNumDiv.textContent = "";
+  currentNumDiv.textContent = "";
+});
 
-function getSubtraction(a, b) {
-  return a - b;
-}
+const c = document.getElementById("c");
+c.addEventListener("click", () => {
+  currentNum = currentNum.slice(0, -1);
+  currentNumDiv.textContent = currentNum;
+});
 
-function getMultiply(a, b) {
-  return a * b;
-}
+// Operations
+const modulus = document.getElementById("modulus");
+modulus.addEventListener("click", () => {
+  if (previousNum === "") previousNum = currentNum;
+  previousNumDiv.textContent = `${previousNum} %`;
+  currentNum = "";
+  currentNumDiv.textContent = "";
+  operation = "%";
+});
 
-function getDivision(a, b) {
-  return a / b;
-}
+const plus = document.getElementById("plus");
+plus.addEventListener("click", () => {
+  if (previousNum === "") previousNum = currentNum;
+  previousNumDiv.textContent = `${previousNum} +`;
+  currentNum = "";
+  currentNumDiv.textContent = "";
+  operation = "+";
+});
 
-function getModulus(a, b) {
-  return a % b;
-}
+const minus = document.getElementById("minus");
+minus.addEventListener("click", () => {
+  if (previousNum === "") previousNum = currentNum;
+  previousNumDiv.textContent = `${previousNum} -`;
+  currentNum = "";
+  currentNumDiv.textContent = "";
+  operation = "-";
+});
+
+const multiply = document.getElementById("multiply");
+multiply.addEventListener("click", () => {
+  if (previousNum === "") previousNum = currentNum;
+  previousNumDiv.textContent = `${previousNum} *`;
+  currentNum = "";
+  currentNumDiv.textContent = "";
+  operation = "*";
+});
+
+const divide = document.getElementById("divide");
+divide.addEventListener("click", () => {
+  if (previousNum === "") previousNum = currentNum;
+  previousNumDiv.textContent = `${previousNum} /`;
+  currentNum = "";
+  currentNumDiv.textContent = "";
+  operation = "/";
+});
+
+const enter = document.getElementById("enter");
+enter.addEventListener("click", () => {
+  if (currentNum === "") {
+    return;
+  } else if (operation === "%") {
+    previousNum = parseInt(previousNum) % parseInt(currentNum);
+  } else if (operation === "+") {
+    previousNum = parseInt(previousNum) + parseInt(currentNum);
+  } else if (operation === "-") {
+    previousNum = parseInt(previousNum) - parseInt(currentNum);
+  } else if (operation === "*") {
+    previousNum = parseInt(previousNum) * parseInt(currentNum);
+  } else if (operation === "/") {
+    previousNum = parseInt(previousNum) / parseInt(currentNum);
+  }
+
+  currentNum = "";
+  currentNumDiv.textContent = "";
+  previousNumDiv.textContent = previousNum;
+});
