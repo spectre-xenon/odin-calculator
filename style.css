@@ -123,5 +123,15 @@ main #controlsContainer {
 }
 
 #controlsContainer .row #enter {
-  flex: 2;
+  flex: 2.25;
+}
+
+@media only screen and (max-width: 600px) {
+  main {
+    height: 60%;
+    width: 85%;
+  }
+  * {
+    font-size: 20px;
+  }
 }
