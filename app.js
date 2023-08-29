@@ -68,73 +68,61 @@ dot.addEventListener("click", () => {
 });
 
 // Controls
-const ac = document.getElementById("ac");
-ac.addEventListener("click", () => {
+function delAll() {
   currentNum = "";
   previousNum = "";
   previousNumDiv.textContent = "";
   currentNumDiv.textContent = "";
+}
+const ac = document.getElementById("ac");
+ac.addEventListener("click", () => {
+  delAll();
 });
 
-const c = document.getElementById("c");
-c.addEventListener("click", () => {
+function del() {
   currentNum = currentNum.slice(0, -1);
   currentNumDiv.textContent = currentNum;
+}
+const c = document.getElementById("c");
+c.addEventListener("click", () => {
+  del();
 });
 
 // Operations
-const modulus = document.getElementById("modulus");
-modulus.addEventListener("click", () => {
+function calculate(sign) {
   if (previousNum === "") previousNum = currentNum;
   if (currentNum === "") previousNum = previousNumDiv.textContent;
-  previousNumDiv.textContent = `${previousNum} %`;
+  previousNumDiv.textContent = `${previousNum} ${sign}`;
   currentNum = "";
   currentNumDiv.textContent = "";
-  operation = "%";
+  operation = `${sign}`;
+}
+const modulus = document.getElementById("modulus");
+modulus.addEventListener("click", () => {
+  calculate("%");
 });
 
 const plus = document.getElementById("plus");
 plus.addEventListener("click", () => {
-  if (previousNum === "") previousNum = currentNum;
-  if (currentNum === "") previousNum = previousNumDiv.textContent;
-  previousNumDiv.textContent = `${previousNum} +`;
-  currentNum = "";
-  currentNumDiv.textContent = "";
-  operation = "+";
+  calculate("+");
 });
 
 const minus = document.getElementById("minus");
 minus.addEventListener("click", () => {
-  if (previousNum === "") previousNum = currentNum;
-  if (currentNum === "") previousNum = previousNumDiv.textContent;
-  previousNumDiv.textContent = `${previousNum} -`;
-  currentNum = "";
-  currentNumDiv.textContent = "";
-  operation = "-";
+  calculate("-");
 });
 
 const multiply = document.getElementById("multiply");
 multiply.addEventListener("click", () => {
-  if (previousNum === "") previousNum = currentNum;
-  if (currentNum === "") previousNum = previousNumDiv.textContent;
-  previousNumDiv.textContent = `${previousNum} *`;
-  currentNum = "";
-  currentNumDiv.textContent = "";
-  operation = "*";
+  calculate("*");
 });
 
 const divide = document.getElementById("divide");
 divide.addEventListener("click", () => {
-  if (previousNum === "") previousNum = currentNum;
-  if (currentNum === "") previousNum = previousNumDiv.textContent;
-  previousNumDiv.textContent = `${previousNum} /`;
-  currentNum = "";
-  currentNumDiv.textContent = "";
-  operation = "/";
+  calculate("/");
 });
 
-const enter = document.getElementById("enter");
-enter.addEventListener("click", () => {
+function getResult() {
   if (currentNum === "") {
     return;
   } else if (operation === "%") {
@@ -153,4 +141,29 @@ enter.addEventListener("click", () => {
   currentNumDiv.textContent = "";
   previousNumDiv.textContent = previousNum;
   previousNum = "";
+}
+const enter = document.getElementById("enter");
+enter.addEventListener("click", () => {
+  getResult();
+});
+
+//  Keyboard controls
+document.addEventListener("keydown", (event) => {
+  if (event.key === "1") addCurrentNum("1");
+  if (event.key === "2") addCurrentNum("2");
+  if (event.key === "3") addCurrentNum("3");
+  if (event.key === "4") addCurrentNum("4");
+  if (event.key === "5") addCurrentNum("5");
+  if (event.key === "6") addCurrentNum("6");
+  if (event.key === "7") addCurrentNum("7");
+  if (event.key === "8") addCurrentNum("8");
+  if (event.key === "9") addCurrentNum("9");
+  if (event.key === "0") addCurrentNum("0");
+  if (event.key === "+") calculate("+");
+  if (event.key === "-") calculate("-");
+  if (event.key === "*") calculate("*");
+  if (event.key === "/") calculate("/");
+  if (event.key === "=" || event.key === "Enter") getResult();
+  if (event.key === "Backspace") del();
+  if (event.key === "Escape") delAll();
 });
