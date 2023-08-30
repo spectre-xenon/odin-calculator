@@ -126,15 +126,15 @@ function getResult() {
   if (currentNum === "") {
     return;
   } else if (operation === "%") {
-    previousNum = parseInt(previousNum) % parseInt(currentNum);
+    previousNum = parseFloat(previousNum) % parseFloat(currentNum);
   } else if (operation === "+") {
-    previousNum = parseInt(previousNum) + parseInt(currentNum);
+    previousNum = parseFloat(previousNum) + parseFloat(currentNum);
   } else if (operation === "-") {
-    previousNum = parseInt(previousNum) - parseInt(currentNum);
+    previousNum = parseFloat(previousNum) - parseFloat(currentNum);
   } else if (operation === "*") {
-    previousNum = parseInt(previousNum) * parseInt(currentNum);
+    previousNum = parseFloat(previousNum) * parseFloat(currentNum);
   } else if (operation === "/") {
-    previousNum = parseInt(previousNum) / parseInt(currentNum);
+    previousNum = parseFloat(previousNum) / parseFloat(currentNum);
   }
 
   currentNum = "";
