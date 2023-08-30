@@ -60,11 +60,14 @@ zero.addEventListener("click", () => {
   addCurrentNum("0");
 });
 
-const dot = document.getElementById("dot");
-dot.addEventListener("click", () => {
+function addDot() {
   if (currentNum.includes(".")) return;
   currentNum += ".";
   currentNumDiv.textContent = currentNum;
+}
+const dot = document.getElementById("dot");
+dot.addEventListener("click", () => {
+  addDot();
 });
 
 // Controls
@@ -163,6 +166,7 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "-") calculate("-");
   if (event.key === "*") calculate("*");
   if (event.key === "/") calculate("/");
+  if (event.key === ".") addDot();
   if (event.key === "=" || event.key === "Enter") getResult();
   if (event.key === "Backspace") del();
   if (event.key === "Escape") delAll();
