@@ -151,23 +151,28 @@ enter.addEventListener("click", () => {
 });
 
 //  Keyboard controls
+
 document.addEventListener("keydown", (event) => {
-  if (event.key === "1") addCurrentNum("1");
-  if (event.key === "2") addCurrentNum("2");
-  if (event.key === "3") addCurrentNum("3");
-  if (event.key === "4") addCurrentNum("4");
-  if (event.key === "5") addCurrentNum("5");
-  if (event.key === "6") addCurrentNum("6");
-  if (event.key === "7") addCurrentNum("7");
-  if (event.key === "8") addCurrentNum("8");
-  if (event.key === "9") addCurrentNum("9");
-  if (event.key === "0") addCurrentNum("0");
-  if (event.key === "+") calculate("+");
-  if (event.key === "-") calculate("-");
-  if (event.key === "*") calculate("*");
-  if (event.key === "/") calculate("/");
+  const keys = {
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5,
+    6: 6,
+    7: 7,
+    8: 8,
+    9: 9,
+    0: 0,
+  };
+
+  if (keys[event.key] != null) addCurrentNum(event.key);
   if (event.key === ".") addDot();
   if (event.key === "=" || event.key === "Enter") getResult();
   if (event.key === "Backspace") del();
   if (event.key === "Escape") delAll();
+  if (event.key === "+") calculate("+");
+  if (event.key === "-") calculate("-");
+  if (event.key === "*") calculate("*");
+  if (event.key === "/") calculate("/");
 });
